@@ -35,6 +35,8 @@ function isDisabled(text) {
 function refreshAffichageDuTableau() {
     // Trie le tableau
     taches = taches.sort((a,b) => a.date - b.date)
+    //Sauvegarde dans le localStorage //TACHE 10
+    localStorage.setItem('tachesSauvegarde', JSON.stringify(taches));
     //  vide le tableau HTML
     $('#tableauTacheBody').html('');
     //  Ajout les lignes grace a la boucle
@@ -90,8 +92,6 @@ function addTaches(){
       }
       //Ajout dans le tableau
       taches.push(newElement);
-      //Sauvegarde dans le localStorage //TACHE 10
-      localStorage.setItem('tachesSauvegarde', JSON.stringify(taches));
       //Refresh table
       refreshAffichageDuTableau();
       //Message d'avertissement pour dire que la tache est bien crée
