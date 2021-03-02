@@ -10,9 +10,16 @@ function isDisabled(text) {
     }
 }
 
-
-
-
+//TACHE 5
+function afficherDansTableau(tache){
+    $('#tableauTacheBody').append(`
+    <tr>
+    <td>${tache.tache}</td>
+    <td>${tache.date}</td>
+    <td>edit / delete</td>
+  </tr>
+    `);
+}
 
 
 
