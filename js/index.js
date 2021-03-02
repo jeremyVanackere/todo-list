@@ -5,10 +5,11 @@ let idTache = 0;
 //TACHE 11
 //Verification dans le localStorage
 const recupTaches = JSON.parse(localStorage.getItem('tachesSauvegarde'))
-//Si mon tableau est vide donc pas de sauvegarde donc je mets le tableau a vide
+//Si mon tableau n'est pas vide donc je prends la sauvegarde
 if(recupTaches !== null){
     taches = recupTaches;
     idTache = taches.length;
+    //Ajout les lignes dans le tableau
     refreshAffichageDuTableau();
 }
 
@@ -25,6 +26,7 @@ function isDisabled(text) {
 //TACHE 6
 //TACHE 7
 function afficherDansTableau(tache){
+  //Ajout les lignes grace a la boucle
     $('#tableauTacheBody').append(`
     <tr>
     <td>${tache.tache}</td>
@@ -38,7 +40,9 @@ function afficherDansTableau(tache){
 //TACHE 6
 //TACHE 7
 function refreshAffichageDuTableau() {
+    //vide le tableau HTML
     $('#tableauTacheBody').html('');
+    //Ajout les lignes grace a la boucle
     taches.forEach(tache => {
         $('#tableauTacheBody').append(`
         <tr>
