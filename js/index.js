@@ -1,7 +1,5 @@
 // Contiendra les tâches tableau d'objet { id, tache, date }
-let taches = []; 
-//Contiendra l'id de tache
-let idTache = 0;
+let taches = [];
 //Initialisation des champs text & date a zero
 function initialisationChamps(){
   document.getElementById('text').value = "";
@@ -82,11 +80,9 @@ function addTaches(){
         timer: 2000
       })
     }else{
-      //Incrementation du compteur des taches
-      idTache++;
       //Creation de l'element
       const newElement = {
-          id: Number(idTache),
+          id: Number(taches.length + 1),
           tache: document.getElementById('text').value.toString(),
           date: moment(document.getElementById("datePickerId").value).format('DD/MM/YYYY').toString()
       }
@@ -111,6 +107,9 @@ function addTaches(){
 }
 
 function initActionBtn () {
+    /**
+     * Modifier
+     */
     $('.editButton').unbind('click').bind('click', function () {
         const id = $(this).data('id') // réupère l'id
         const elemTache = $('#'+id).find('.tdTache'); // récupère l'element du td
@@ -147,5 +146,17 @@ function initActionBtn () {
         $('#' + idAnnuler).unbind('click').bind('click', function () {
             refreshAffichageDuTableau();
         })
+    })
+
+    /**
+     * Delete
+     */
+    $('.deleteButton').unbind('click').bind('click', function () {
+        const id = $(this).data('id') // réupère l'id
+        taches = taches.filter(tache => id != tache.id)
+        taches.forEach((tache, index) => {
+            tache.id = index;
+        })
+        refreshAffichageDuTableau();
     })
 }
