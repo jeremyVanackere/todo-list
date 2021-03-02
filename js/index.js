@@ -9,6 +9,7 @@ const recupTaches = JSON.parse(localStorage.getItem('tachesSauvegarde'))
 if(recupTaches !== null){
     taches = recupTaches;
     idTache = taches.length;
+    refreshAffichageDuTableau();
 }
 
 function isDisabled(text) {
@@ -21,6 +22,8 @@ function isDisabled(text) {
 }
 
 //TACHE 5
+//TACHE 6
+//TACHE 7
 function afficherDansTableau(tache){
     $('#tableauTacheBody').append(`
     <tr>
@@ -31,6 +34,9 @@ function afficherDansTableau(tache){
     `);
 }
 
+//TACHE 5
+//TACHE 6
+//TACHE 7
 function refreshAffichageDuTableau() {
     $('#tableauTacheBody').html('');
     taches.forEach(tache => {
