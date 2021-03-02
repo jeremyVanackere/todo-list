@@ -71,6 +71,8 @@ function addTaches(){
     }
     //Ajout dans le tableau
     taches.push(newElement);
+    /********* Test Tech 04 ************/
+    console.log(localStorage.getItem(localStorage.length-1));
     //Sauvegarde dans le localStorage //TACHE 10
     localStorage.setItem('tachesSauvegarde', JSON.stringify(taches));
 
