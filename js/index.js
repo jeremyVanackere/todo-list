@@ -75,4 +75,13 @@ function addTaches(){
     localStorage.setItem('tachesSauvegarde', JSON.stringify(taches));
     //Refresh table
     refreshAffichageDuTableau();
+    //Message d'avertissement pour dire que la tache est bien crée
+    Swal.fire({
+      title: 'Information',
+      position: "top-right",
+      text: 'Nouvelle tâche ajoutée !',
+      icon: 'success',
+      confirmButtonText: 'Cool',
+      timer: 1500
+    })
 }
