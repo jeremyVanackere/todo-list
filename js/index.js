@@ -33,6 +33,8 @@ function isDisabled(text) {
 //TACHE 6
 //TACHE 7
 function refreshAffichageDuTableau() {
+    // Trie le tableau
+    taches = taches.sort((a,b) => a.date - b.date)
     //  vide le tableau HTML
     $('#tableauTacheBody').html('');
     //  Ajout les lignes grace a la boucle
@@ -123,7 +125,7 @@ function initActionBtn () {
         value="${ elemTache.attr('value') }"
         />`
         const idDatePicker = 'datePicker' + id
-        const htmlDate = `<input value="${elemDate.attr('value')}" type="date" id="${idDatePicker}" onkeydown="return false">`
+        const htmlDate = `<input value="${moment(elemDate.attr('value')).format('YYYY-MM-DD').toString()}" type="date" id="${idDatePicker}" onkeydown="return false">`
         elemTache.html(htmlTache)
         elemDate.html(htmlDate)
         $('.actionBasic').hide()
@@ -137,7 +139,7 @@ function initActionBtn () {
             taches.forEach(tache => {
                 if (tache.id === id) {
                     tache.tache = $('#' + idInputTache).val()
-                    tache.date = $('#' + idDatePicker).val()
+                    tache.date = moment($('#' + idDatePicker).val()).format('DD/MM/YYYY').toString()
                     refreshAffichageDuTableau();
                 }
             })
