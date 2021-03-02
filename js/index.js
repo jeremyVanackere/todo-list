@@ -28,7 +28,7 @@ function isDisabled(text) {
 function afficherDansTableau(tache){
   //Ajout les lignes grace a la boucle
     $('#tableauTacheBody').append(`
-    <tr>
+    <tr class='tache'>
     <td>${tache.tache}</td>
     <td>${tache.date}</td>
     <td>edit / delete</td>
