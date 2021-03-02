@@ -1,5 +1,15 @@
-var taches = [] // Contiendra les tâches tableau d'objet { id, tache, date }
-var idTache = 0;
+// Contiendra les tâches tableau d'objet { id, tache, date }
+let taches = []; 
+//Contiendra l'id de tache
+let idTache = 0;
+//TACHE 11
+//Verification dans le localStorage
+const recupTaches = JSON.parse(localStorage.getItem('tachesSauvegarde'))
+//Si mon tableau est vide donc pas de sauvegarde donc je mets le tableau a vide
+if(recupTaches !== null){
+    taches = recupTaches;
+    idTache = taches.length;
+}
 
 function isDisabled(text) {
     const btn = document.getElementById('submit');
@@ -21,8 +31,6 @@ function afficherDansTableau(tache){
     `);
 }
 
-
-
 //TACHE 3
 datePickerId.min = new Date().toISOString().split("T")[0];
 
@@ -38,4 +46,6 @@ function addTaches(){
     }
     //Ajout dans le tableau
     taches.push(newElement);
+    //Sauvegarde dans le localStorage //TACHE 10
+    localStorage.setItem('tachesSauvegarde', JSON.stringify(taches));
 }
