@@ -63,4 +63,6 @@ function addTaches(){
     taches.push(newElement);
     //Sauvegarde dans le localStorage //TACHE 10
     localStorage.setItem('tachesSauvegarde', JSON.stringify(taches));
+    //Refresh table
+    refreshAffichageDuTableau();
 }
