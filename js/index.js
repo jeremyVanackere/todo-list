@@ -33,9 +33,9 @@ function isDisabled(text) {
 //TACHE 6
 //TACHE 7
 function refreshAffichageDuTableau() {
-    //vide le tableau HTML
+    //  vide le tableau HTML
     $('#tableauTacheBody').html('');
-    //Ajout les lignes grace a la boucle
+    //  Ajout les lignes grace a la boucle
     taches.forEach(tache => {
         $('#tableauTacheBody').append(`
         <tr id='${tache.id}'>
@@ -152,11 +152,28 @@ function initActionBtn () {
      * Delete
      */
     $('.deleteButton').unbind('click').bind('click', function () {
-        const id = $(this).data('id') // réupère l'id
-        taches = taches.filter(tache => id != tache.id)
-        taches.forEach((tache, index) => {
-            tache.id = index;
+        Swal.fire({
+            title: 'Etes-vous sur?',
+            text: "Si vous validez cette donnée sera perdu",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Oui',
+            cancelButtonText: 'Non',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const id = $(this).data('id') // réupère l'id
+                taches = taches.filter(tache => id != tache.id)
+                taches.forEach((tache, index) => {
+                    tache.id = index;
+                })
+                refreshAffichageDuTableau();
+
+                Swal.fire(
+                    'Supprimé!',
+                    'success'
+                )
+            }
         })
-        refreshAffichageDuTableau();
     })
 }
