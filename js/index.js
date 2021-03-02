@@ -70,11 +70,12 @@ datePickerId.min = new Date().toISOString().split("T")[0];
 function addTaches(){
     //Verification date
     if(document.getElementById('datePickerId').value.toString() === "" || document.getElementById('text').value.toString() === ""){
+      //Par defaut je vais afficher que la date est vide
       let erreurPhrase = "Merci de spécifier la date.";
+      //sinon je vais afficher que le champs text est vide
       if(document.getElementById('text').value.toString() === ""){
         erreurPhrase = "Merci de spécifier le nom de la tâche";
       }
-
       //Affiche message erreur si pas de date spécifié
       Swal.fire({
         title: 'Information',
