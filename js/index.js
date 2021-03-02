@@ -28,30 +28,21 @@ function isDisabled(text) {
 //TACHE 5
 //TACHE 6
 //TACHE 7
-function afficherDansTableau(tache){
-  //Ajout les lignes grace a la boucle
-    $('#tableauTacheBody').append(`
-    <tr class='tache'>
-    <td>${tache.tache}</td>
-    <td>${tache.date}</td>
-    <td><button class='editButton' id='${tache.id}'>edit</button> / <button class='deleteButton' id='${tache.id}'>delete</button></td>
-  </tr>
-    `);
-}
-
-//TACHE 5
-//TACHE 6
-//TACHE 7
 function refreshAffichageDuTableau() {
     //vide le tableau HTML
     $('#tableauTacheBody').html('');
     //Ajout les lignes grace a la boucle
     taches.forEach(tache => {
         $('#tableauTacheBody').append(`
-        <tr>
-        <td>${tache.tache}</td>
-        <td>${tache.date}</td>
-        <td><button class='editButton' id='${tache.id}'>edit</button> / <button class='deleteButton' id='${tache.id}'>delete</button></td>
+        <tr id='${tache.id}'>
+        <td class="tdTache" value="${tache.tache}">${tache.tache}</td>
+        <td class="tdDate" value="${tache.date}">${tache.date}</td>
+        <td class="tdAction">
+            <div class="actionBasic">
+                <button @onClick="modifierTache" class='editButton' data-id='${tache.id}'>edit</button> / 
+                <button class='deleteButton' data-id='${tache.id}'>delete</button>
+            </div>
+        </td>
       </tr>
         `); 
     });
@@ -100,5 +91,33 @@ function addTaches(){
         timer: 1500
       })
     }
-    
 }
+
+$('.editButton').unbind('click').bind('click', function () {
+    const id = $(this).data('id') // réupère l'id
+    const elemTache = $('#'+id).find('.tdTache'); // récupère l'element du td
+    const elemDate = $('#'+id).find('.tdDate'); // récupère l'element du td
+    const elemAction = $('#'+id).find('.tdAction'); // récupère l'element du td
+    const idInputTache = 'idInputTache' + id
+    const htmlTache = `<input
+        type="text"
+        id="${idInputTache}"
+        id="text"
+        value="${ elemTache.attr('value') }"
+        />`
+    const idDatePicker = 'datePicker' + id
+    const htmlDate = `<input value="${elemDate.attr('value')}" type="date" id="${idDatePicker}" onkeydown="return false">`
+    elemTache.html(htmlTache)
+    elemDate.html(htmlDate)
+    $('.actionBasic').hide()
+    elemAction.append('<button id="modifEnCours" data-id="{tache.id">Valider</button>')
+    $('#modifEnCours').unbind('click').bind('click', function () {
+        taches.forEach(tache => {
+            if (tache.id === id) {
+                tache.tache = $('#' + idInputTache).val()
+                tache.date = $('#' + idDatePicker).val()
+                refreshAffichageDuTableau();
+            }
+        })
+    })
+})
