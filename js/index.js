@@ -128,8 +128,13 @@ function initActionBtn () {
         elemTache.html(htmlTache)
         elemDate.html(htmlDate)
         $('.actionBasic').hide()
-        elemAction.append('<button id="modifEnCours" data-id="{tache.id">Valider</button>')
-        $('#modifEnCours').unbind('click').bind('click', function () {
+
+        const idValider = 'modifEnCoursValider'
+        const idAnnuler = 'modifEnCoursAnnuler'
+        elemAction.append(`<button id="${idValider}" data-id="{tache.id">Valider</button> /
+            <button id="${idAnnuler}" data-id="{tache.id">Annuler</button>`)
+
+        $('#' + idValider).unbind('click').bind('click', function () {
             taches.forEach(tache => {
                 if (tache.id === id) {
                     tache.tache = $('#' + idInputTache).val()
@@ -137,6 +142,10 @@ function initActionBtn () {
                     refreshAffichageDuTableau();
                 }
             })
+        })
+
+        $('#' + idAnnuler).unbind('click').bind('click', function () {
+            refreshAffichageDuTableau();
         })
     })
 }
