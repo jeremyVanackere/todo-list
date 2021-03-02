@@ -3,8 +3,10 @@ var idTache = 0;
 
 function isDisabled(text) {
     var btn = document.getElementById('submit');
-    if(text.value != '') {
-        btn.disabled = false
+    if (text.value != "") {
+      btn.disabled = false;
+    } else {
+      btn.disabled = true;
     }
 }
 
