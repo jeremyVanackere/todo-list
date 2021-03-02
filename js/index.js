@@ -8,3 +8,5 @@ function isDisabled(text) {
     }
 }
 
+//TACHE 3
+datePickerId.min = new Date().toISOString().split("T")[0];
