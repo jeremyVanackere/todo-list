@@ -8,10 +8,10 @@
   <body>
     <div id="fromAjouter">
       <!-- TODO : mettre le formulaire d'ajout -->
-      <form>
-        <input type="text" placeholder="Entez une tâche à faire ..." />
-        <button type="submit">Ajouter la tâche</button>
-      </form>
+      
+        <input type="text" id="text" onkeyup="isDisabled(this)" placeholder="Entez une tâche à faire ..." />
+        <input id="submit" type="submit" disabled />
+      
     </div>
 
     <div id="tableauTache">
