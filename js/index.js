@@ -3,8 +3,12 @@ let taches = [];
 //Contiendra l'id de tache
 let idTache = 0;
 //Initialisation des champs text & date a zero
-document.getElementById('text').value = "";
-document.getElementById('datePickerId').value = "";
+function initialisationChamps(){
+  document.getElementById('text').value = "";
+  document.getElementById('datePickerId').value = "";
+}
+//Appel de la fonction pour les champs a zero
+initialisationChamps();
 //TACHE 11
 //Verification dans le localStorage
 const recupTaches = JSON.parse(localStorage.getItem('tachesSauvegarde'))
@@ -15,7 +19,8 @@ if(recupTaches !== null){
     //Ajout les lignes dans le tableau
     refreshAffichageDuTableau();
 }
-
+//cette fonction va permettre de verrouiller ou deverrouiller le button "envoyer" pour eviter
+//d envoyer des taches vides
 function isDisabled(text) {
     const btn = document.getElementById('submit');
     if (text.value.toString() !== "") {
@@ -58,7 +63,6 @@ function refreshAffichageDuTableau() {
 }
 
 
-
 //TACHE 3
 datePickerId.min = new Date().toISOString().split("T")[0];
 
@@ -80,7 +84,7 @@ function addTaches(){
       idTache++;
       //Creation de l'element
       const newElement = {
-          id: idTache,
+          id: Number(idTache),
           tache: document.getElementById('text').value.toString(),
           date: document.getElementById("datePickerId").value.toString()
       }
@@ -98,7 +102,8 @@ function addTaches(){
         icon: 'success',
         confirmButtonText: 'Cool',
         timer: 1500
-      })
+      });
+      //Remise a zero des champs
+      initialisationChamps();
     }
-    
 }
