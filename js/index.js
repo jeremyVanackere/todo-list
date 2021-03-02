@@ -5,7 +5,7 @@ let idTache = 0;
 //Initialisation des champs text & date a zero
 function initialisationChamps(){
   document.getElementById('text').value = "";
-  document.getElementById('datePickerId').value = "";
+  document.getElementById('datePickerId').value = new Date().toISOString().split("T")[0];
 }
 //Appel de la fonction pour les champs a zero
 initialisationChamps();
