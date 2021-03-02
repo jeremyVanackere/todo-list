@@ -31,7 +31,6 @@ function afficherDansTableau(tache){
     `);
 }
 
-<<<<<<< HEAD
 function refreshAffichageDuTableau() {
     $('#tableauTacheBody').html('');
     taches.forEach(tache => {
@@ -47,8 +46,6 @@ function refreshAffichageDuTableau() {
 
 
 
-=======
->>>>>>> 1243719ee0e3986b61e9b8e9762c81bb6b1121b2
 //TACHE 3
 datePickerId.min = new Date().toISOString().split("T")[0];
 
