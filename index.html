@@ -47,6 +47,7 @@
     <script src="js/index.js"></script>
     <script>
       $(document).ready(function(){
+        // Filtre le tableau
       $("#searchInput").on("keyup", function() {
         var value = $(this).val().toLowerCase();
             $("#myTable tr").filter(function() {
@@ -54,6 +55,8 @@
             });
         });
       });
+
+      
     </script>
   </body>
 </html>

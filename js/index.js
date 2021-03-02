@@ -31,7 +31,7 @@ function afficherDansTableau(tache){
     <tr class='tache'>
     <td>${tache.tache}</td>
     <td>${tache.date}</td>
-    <td>edit / delete</td>
+    <td><button class='editButton' id='${tache.id}'>edit</button> / <button class='deleteButton' id='${tache.id}'>delete</button></td>
   </tr>
     `);
 }
@@ -48,7 +48,7 @@ function refreshAffichageDuTableau() {
         <tr>
         <td>${tache.tache}</td>
         <td>${tache.date}</td>
-        <td>edit / delete</td>
+        <td><button class='editButton' id='${tache.id}'>edit</button> / <button class='deleteButton' id='${tache.id}'>delete</button></td>
       </tr>
         `); 
     });

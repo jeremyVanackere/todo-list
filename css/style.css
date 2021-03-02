@@ -1,0 +1,13 @@
+body {
+    max-width: 50%;
+    margin: auto;
+    margin-top: 25px;
+}
+
+#tableauTache {
+    padding-top: 50px;
+}
+
+table {
+    padding-top: 15px;
+}
