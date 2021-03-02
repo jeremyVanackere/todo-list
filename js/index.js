@@ -6,6 +6,7 @@ let idTache = 0;
 function initialisationChamps(){
   document.getElementById('text').value = "";
   document.getElementById('datePickerId').value = new Date().toISOString().split("T")[0];
+  document.getElementById('submit').disabled = true;
 }
 //Appel de la fonction pour les champs a zero
 initialisationChamps();
