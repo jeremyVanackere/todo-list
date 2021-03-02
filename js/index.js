@@ -73,6 +73,13 @@ function addTaches(){
     taches.push(newElement);
     //Sauvegarde dans le localStorage //TACHE 10
     localStorage.setItem('tachesSauvegarde', JSON.stringify(taches));
+
+    /********** Test Tech 10 **************/
+    for (var i = 0; i < localStorage.length; i++){
+        console.log(localStorage.getItem(localStorage.key(i)));
+    }
+
+
     //Refresh table
     refreshAffichageDuTableau();
     //Message d'avertissement pour dire que la tache est bien crée
