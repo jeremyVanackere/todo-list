@@ -2,6 +2,9 @@
 let taches = []; 
 //Contiendra l'id de tache
 let idTache = 0;
+//Initialisation des champs text & date a zero
+document.getElementById('text').value = "";
+document.getElementById('datePickerId').value = "";
 //TACHE 11
 //Verification dans le localStorage
 const recupTaches = JSON.parse(localStorage.getItem('tachesSauvegarde'))
@@ -15,7 +18,7 @@ if(recupTaches !== null){
 
 function isDisabled(text) {
     const btn = document.getElementById('submit');
-    if (text.value != "") {
+    if (text.value.toString() !== "") {
       btn.disabled = false;
     } else {
       btn.disabled = true;
@@ -61,27 +64,41 @@ datePickerId.min = new Date().toISOString().split("T")[0];
 
 //TACHE 4
 function addTaches(){
-    //Incrementation du compteur des taches
-    idTache++;
-    //Creation de l'element
-    const newElement = {
-        id: idTache,
-        tache: document.getElementById('text').value.toString(),
-        date: document.getElementById("datePickerId").value.toString()
+    //Verification date
+    if(document.getElementById('datePickerId').value.toString() === ""){
+      //Affiche message erreur si pas de date spécifié
+      Swal.fire({
+        title: 'Information',
+        position: "center",
+        text: 'Merci de spécifier une date',
+        icon: 'info',
+        confirmButtonText: 'Pas de soucis',
+        timer: 2000
+      })
+    }else{
+      //Incrementation du compteur des taches
+      idTache++;
+      //Creation de l'element
+      const newElement = {
+          id: idTache,
+          tache: document.getElementById('text').value.toString(),
+          date: document.getElementById("datePickerId").value.toString()
+      }
+      //Ajout dans le tableau
+      taches.push(newElement);
+      //Sauvegarde dans le localStorage //TACHE 10
+      localStorage.setItem('tachesSauvegarde', JSON.stringify(taches));
+      //Refresh table
+      refreshAffichageDuTableau();
+      //Message d'avertissement pour dire que la tache est bien crée
+      Swal.fire({
+        title: 'Information',
+        position: "top-right",
+        text: 'Nouvelle tâche ajoutée !',
+        icon: 'success',
+        confirmButtonText: 'Cool',
+        timer: 1500
+      })
     }
-    //Ajout dans le tableau
-    taches.push(newElement);
-    //Sauvegarde dans le localStorage //TACHE 10
-    localStorage.setItem('tachesSauvegarde', JSON.stringify(taches));
-    //Refresh table
-    refreshAffichageDuTableau();
-    //Message d'avertissement pour dire que la tache est bien crée
-    Swal.fire({
-      title: 'Information',
-      position: "top-right",
-      text: 'Nouvelle tâche ajoutée !',
-      icon: 'success',
-      confirmButtonText: 'Cool',
-      timer: 1500
-    })
+    
 }
