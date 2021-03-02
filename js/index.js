@@ -21,6 +21,19 @@ function afficherDansTableau(tache){
     `);
 }
 
+function refreshAffichageDuTableau() {
+    $('#tableauTacheBody').html('');
+    taches.forEach(tache => {
+        $('#tableauTacheBody').append(`
+        <tr>
+        <td>${tache.tache}</td>
+        <td>${tache.date}</td>
+        <td>edit / delete</td>
+      </tr>
+        `); 
+    });
+}
+
 
 
 //TACHE 3
