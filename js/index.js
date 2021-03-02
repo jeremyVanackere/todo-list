@@ -2,9 +2,11 @@ var taches = [] // Contiendra les tâches tableau d'objet { id, tache, date }
 var idTache = 0;
 
 function isDisabled(text) {
-    var btn = document.getElementById('submit');
-    if(text.value != '') {
-        btn.disabled = false
+    const btn = document.getElementById('submit');
+    if (text.value != "") {
+      btn.disabled = false;
+    } else {
+      btn.disabled = true;
     }
 }
 
