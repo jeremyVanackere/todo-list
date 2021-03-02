@@ -93,7 +93,7 @@ function addTaches(){
       const newElement = {
           id: Number(idTache),
           tache: document.getElementById('text').value.toString(),
-          date: document.getElementById("datePickerId").value.toString()
+          date: moment(document.getElementById("datePickerId").value).format('DD/MM/YYYY').toString()
       }
       //Ajout dans le tableau
       taches.push(newElement);
