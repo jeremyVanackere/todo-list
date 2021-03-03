@@ -1,7 +1,7 @@
 // Contiendra les tâches tableau d'objet { id, tache, date }
 let taches = [];
 //Initialisation des champs text & date a zero
-function initialisationChamps(){
+function initialisationChamps() {
   document.getElementById('text').value = "";
   document.getElementById('datePickerId').value = new Date().toISOString().split("T")[0];
   document.getElementById('submit').disabled = true;
@@ -54,15 +54,24 @@ function refreshAffichageDuTableau() {
       </tr>
         `); 
     });
-
+    // Set le minimal date
+    setMinialDate();
     // init les actions
     initActionBtn();
 }
 
-
-
-//TACHE 3
-datePickerId.min = new Date().toISOString().split("T")[0];
+/**
+ * TACHE 3
+ * Set le minimal date pour les input date
+ */
+function setMinialDate () {
+    const minimalDate = new Date().toISOString().split("T")[0];
+    // set minimal date
+    elementsInputDate = document.querySelectorAll('input[type="date"]');
+    elementsInputDate.forEach(inputDate => {
+        inputDate.min = minimalDate
+    })
+}
 
 //TACHE 4
 function addTaches(){
@@ -130,10 +139,14 @@ function initActionBtn () {
         elemDate.html(htmlDate)
         $('.actionBasic').hide()
 
+        idDatePicker.min = new Date().toISOString().split("T")[0];
+
         const idValider = 'modifEnCoursValider'
         const idAnnuler = 'modifEnCoursAnnuler'
         elemAction.append(`<button id="${idValider}" data-id="{tache.id">Valider</button> /
             <button id="${idAnnuler}" data-id="{tache.id">Annuler</button>`)
+
+        setMinialDate(); // set la date minimal
 
         $('#' + idValider).unbind('click').bind('click', function () {
             taches.forEach(tache => {
