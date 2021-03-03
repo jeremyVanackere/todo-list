@@ -1,13 +1,41 @@
 body {
-    max-width: 50%;
-    margin: auto;
-    margin-top: 25px;
+  max-width: 50%;
+  margin: auto;
+  margin-top: 25px;
 }
 
 #tableauTache {
-    padding-top: 50px;
+  padding-top: 50px;
 }
 
 table {
-    padding-top: 15px;
+  padding-top: 15px;
+}
+
+button {
+  text-transform: capitalize;
+  font-size: 1.2rem;
+  background: #059DC0;
+  color: white;
+  border-radius: 0.1rem;
+  border-color:#059DC0;
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+button:hover {
+  color: white;
+  background: #04D4F0;
+}
+
+button::focus {
+  outline: none;
+}
+
+input, input [type=submit] {
+    border: 1px solid darkblue;
+    padding: 0.2rem 0.5rem;
+    height: 1.5rem;
+    font-size: 16px;
+
 }
