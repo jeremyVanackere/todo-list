@@ -185,10 +185,10 @@ function initActionBtn () {
                 })
                 refreshAffichageDuTableau();
 
-                Swal.fire(
-                    'Supprimé!',
-                    'success'
-                )
+                Swal.fire({
+                    title:'Supprimé!',
+                    icon: 'success'
+                })
             }
         })
     })
