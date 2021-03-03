@@ -144,8 +144,8 @@ function initActionBtn () {
 
         const idValider = 'modifEnCoursValider'
         const idAnnuler = 'modifEnCoursAnnuler'
-        elemAction.append(`<button class="btn btn-success" id="${idValider}" data-id="{tache.id">Valider</button> /
-            <button class="btn btn-info" id="${idAnnuler}" data-id="{tache.id">Annuler</button>`)
+        elemAction.append(`<button class="btn btn-success" id="${idValider}" data-id="{tache.id">Valider <i class="fas fa-check"></i></button> 
+            <button class="btn btn-info" id="${idAnnuler}" data-id="{tache.id">Annuler <i class="fas fa-times"></i></button>`)
 
         setMinialDate(); // set la date minimal
 
