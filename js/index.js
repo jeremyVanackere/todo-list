@@ -47,8 +47,8 @@ function refreshAffichageDuTableau() {
         <td class="tdDate" value="${tache.date}">${tache.date}</td>
         <td class="tdAction">
             <div class="actionBasic">
-                <button @onClick="modifierTache" class='editButton' data-id='${tache.id}'>edit</button> / 
-                <button class='deleteButton' data-id='${tache.id}'>delete</button>
+                <button @onClick="modifierTache" class='btn btn-info editButton' data-id='${tache.id}'>Editer <i class="fas fa-pen"></i></button>
+                <button class='btn btn-danger deleteButton' data-id='${tache.id}'>Supprimer cette tâche <i class="fas fa-trash"></i></button>
             </div>
         </td>
       </tr>
@@ -123,17 +123,18 @@ function initActionBtn () {
         id="${idInputTache}"
         id="text"
         value="${ elemTache.attr('value') }"
+        class="form-control"
         />`
         const idDatePicker = 'datePicker' + id
-        const htmlDate = `<input value="${moment(elemDate.attr('value')).format('YYYY-MM-DD').toString()}" type="date" id="${idDatePicker}" onkeydown="return false">`
+        const htmlDate = `<input class="form-control" value="${moment(elemDate.attr('value')).format('YYYY-MM-DD').toString()}" type="date" id="${idDatePicker}" onkeydown="return false">`
         elemTache.html(htmlTache)
         elemDate.html(htmlDate)
         $('.actionBasic').hide()
 
         const idValider = 'modifEnCoursValider'
         const idAnnuler = 'modifEnCoursAnnuler'
-        elemAction.append(`<button id="${idValider}" data-id="{tache.id">Valider</button> /
-            <button id="${idAnnuler}" data-id="{tache.id">Annuler</button>`)
+        elemAction.append(`<button class="btn btn-success" id="${idValider}" data-id="{tache.id">Valider</button> /
+            <button class="btn btn-info" id="${idAnnuler}" data-id="{tache.id">Annuler</button>`)
 
         $('#' + idValider).unbind('click').bind('click', function () {
             taches.forEach(tache => {
